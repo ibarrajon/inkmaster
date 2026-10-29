@@ -1,0 +1,146 @@
+:root {
+  --fondo: #0f0f10;
+  --fondo-panel: #17171a;
+  --texto: #ffffff;
+  --texto-suave: #a9a9b2;
+  --acento: #e50914;
+  --acento-hover: #f40612;
+  --borde: #2a2a2e;
+  --fondo-hover: #1f1f23;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--fondo-panel);
+  border-bottom: 1px solid var(--borde);
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.menu {
+  width: 100%;
+  max-width: 420px;
+  background: var(--fondo-panel);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.temporada {
+  border-bottom: 1px solid var(--borde);
+}
+
+.temporada:last-child {
+  border-bottom: none;
+}
+
+.temporada-titulo {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--texto-suave);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temporada-titulo:hover {
+  color: var(--texto);
+  background: var(--fondo-hover);
+}
+
+.temporada-titulo::after {
+  content: "▼";
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.temporada-titulo[aria-expanded="true"]::after {
+  content: "▲";
+}
+
+.capitulos {
+  display: none;
+  flex-direction: column;
+}
+
+.capitulos.abierto {
+  display: flex;
+}
+
+.capitulo-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--borde);
+  color: var(--texto-suave);
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.capitulo-btn:last-child {
+  border-bottom: none;
+}
+
+.capitulo-btn:hover {
+  background: var(--fondo-hover);
+  color: var(--texto);
+}
+
+.capitulo-btn.activo {
+  background: var(--acento);
+  color: #ffffff;
+}
+
+/* Smart TV: botones más grandes y fácil de leer a distancia */
+@media (min-width: 1920px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .temporada-titulo {
+    font-size: 1.4rem;
+    padding: 1.4rem 2rem;
+  }
+
+  .capitulo-btn {
+    font-size: 1.25rem;
+    padding: 1.2rem 2rem;
+  }
+}
